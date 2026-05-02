@@ -17,10 +17,28 @@ def main():
     with open(path, newline="") as f:
         reader = csv.reader(f)
         headers = next(reader)
-        row_count = sum(1 for row in reader)
+        rows = list(reader)
+
+        column_types = {}
+
+        for i, header in enumerate(headers):
+            values = [row[i] for row in rows]
+            is_numeric = True
+
+            for value in values:
+                try:
+                    float(value)
+                except ValueError:
+                    is_numeric = False
+                    break
+
+            column_types[header] = 'numeric' if is_numeric else 'text'
+        
+        print(column_types)
 
     print(f"Columns: {headers}")
-    print(f"Rows: {row_count}")
+    print(f"Row count: {len(rows)}")
+    print(rows[0])
 
 
 
