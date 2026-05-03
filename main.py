@@ -31,9 +31,18 @@ def main():
                 except ValueError:
                     is_numeric = False
                     break
+            if is_numeric:
+                numeric_values = [float(v) for v in values if v != ""]
+                col_min = min(numeric_values)
+                col_max = max(numeric_values)
+                col_mean = sum(numeric_values) / len(numeric_values)
 
-            column_types[header] = 'numeric' if is_numeric else 'text'
-        
+                print(f'{header}: min = {col_min}, max ={col_max}, mean = {col_mean}')
+
+
+                column_types[header] = 'numeric' if is_numeric else 'text'
+
+            
         print(column_types)
 
     print(f"Columns: {headers}")
