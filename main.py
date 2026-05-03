@@ -43,7 +43,7 @@ def main():
             col_mean = sum(numeric_values) / len(numeric_values)
             print(f'{header}: min = {col_min}, max={col_max}, mean={col_mean:.2f}')
         
-        print(f"\nColumn types: {column_types}") 
+    print(f"\nColumn types: {column_types}") 
 
 
 
